@@ -3,9 +3,9 @@
 internal sealed class AsynchronousScenario : IBreakfast
 {
     private readonly BreakfastProcessor processor;
-    public AsynchronousScenario(BreakfastProcessor processor)
+    public AsynchronousScenario()
     {
-        this.processor = processor;
+        this.processor = new BreakfastProcessor();
     }
 
     public async Task MakeBreakfast(CancellationToken cancellationToken = default)
