@@ -1,7 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Breakfast.Scenarios;
-using Breakfast;
+﻿using Breakfast.Scenarios;
 
 var tokenSource = new CancellationTokenSource();
 var cancellationToken = tokenSource.Token;
@@ -13,10 +10,11 @@ Console.CancelKeyPress += (_, eventArgs) =>
     tokenSource.Cancel();
 };
 
-var processor = new BreakfastProcessor();
-//var scenario = new SynchronousScenario(processor);
+IBreakfast scenario;
+scenario = new AsynchronousScenario();
 
-var scenario = new AsynchronousScenario(processor);
+// uncomment this line to see synchronous scenario result
+//scenario = new SynchronousScenario();
 
 try
 {
@@ -25,7 +23,7 @@ try
 catch (TaskCanceledException)
 {
     Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine($"{Environment.NewLine} Breakfast caneled!!! {Environment.NewLine}");
+    Console.WriteLine($"{Environment.NewLine} Breakfast canceled!!! {Environment.NewLine}");
     Console.ForegroundColor = ConsoleColor.White;
 }
 finally
