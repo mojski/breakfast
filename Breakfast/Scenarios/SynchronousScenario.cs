@@ -15,7 +15,7 @@ internal sealed class SynchronousScenario : IBreakfast
         var water = await processor.BoilWaterAsync(cancellationToken);
         // make tea
         await processor.MakeTeaAsync(water, cancellationToken);
-        // make sanwich
+        // make sandwich
         await processor.MakeSandwichAsync(cancellationToken);
         // get cookies
         await processor.GetCookieAsync(cancellationToken);

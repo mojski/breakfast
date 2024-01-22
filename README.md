@@ -44,3 +44,37 @@ finally
 ```
 
 In app we will use different breakfast scenarios showing different app behaviors and implementations. 
+
+If we use async await like many programmers do, the only benefit will be the ability to cancel breakfast. Breakfast will be made synchronously step by step.
+
+```csharp
+// boil water
+var water = await processor.BoilWaterAsync(cancellationToken);
+// make tea
+await processor.MakeTeaAsync(water, cancellationToken);
+// make sandwich
+await processor.MakeSandwichAsync(cancellationToken);
+// get cookies
+await processor.GetCookieAsync(cancellationToken);
+```
+
+But we don't have to waste our time to waiting for hot water. We can do sandwich and prepare cookies at the same time:
+
+```csharp
+// boil water, we will need it later
+var waterTask = processor.BoilWaterAsync(cancellationToken);
+
+// time to make sandwich
+var sandwichTask =  processor.MakeSandwichAsync(cancellationToken);
+
+// get cookies
+var cookieTask =  processor.GetCookieAsync(cancellationToken);
+
+// now we need hot water to continue
+var water = await waterTask;
+var teaTask =  processor.MakeTeaAsync(water, cancellationToken);
+
+// serve breakfast when all thins are ready
+await Task.WhenAll(sandwichTask, cookieTask, teaTask);
+```
+

@@ -11,19 +11,21 @@ internal sealed class AsynchronousScenario : IBreakfast
     public async Task MakeBreakfast(CancellationToken cancellationToken = default)
     {
         var start = DateTime.UtcNow;
+
         // boil water, we will need it later
         var waterTask = processor.BoilWaterAsync(cancellationToken);
-        
+
         // time to make sandwich
         var sandwichTask =  processor.MakeSandwichAsync(cancellationToken);
 
         // get cookies
         var cookieTask =  processor.GetCookieAsync(cancellationToken);
 
-        // after 
+        // now we need hot water to continue
         var water = await waterTask;
         var teaTask =  processor.MakeTeaAsync(water, cancellationToken);
 
+        // serve breakfast when all thins are ready
         await Task.WhenAll(sandwichTask, cookieTask, teaTask);
 
         var now = DateTime.UtcNow;
