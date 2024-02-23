@@ -11,10 +11,13 @@ Console.CancelKeyPress += (_, eventArgs) =>
 };
 
 IBreakfast scenario;
-scenario = new AsynchronousScenario();
+scenario = new BreakfastForTwoScenario();
 
 // uncomment this line to see synchronous scenario result
 //scenario = new SynchronousScenario();
+//scenario = new AsynchronousScenario();
+//var manuallyThreadScenario = new BreakfastForTwoScenario();
+//await manuallyThreadScenario.MakeBreakFastWithManuallyCreatedThread(cancellationToken);
 
 try
 {
@@ -29,6 +32,6 @@ catch (TaskCanceledException)
 finally
 {
     Console.WriteLine("End");
-}    
+}
 
 Console.ReadKey();

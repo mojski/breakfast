@@ -40,14 +40,14 @@ public static class AsciArt
 
         Console.WriteLine($" _  __" +
             $"{Environment.NewLine}( `^` ))" +
-            $"{Environment.NewLine}|     ||" +
+            $"{Environment.NewLine}| jgs ||" +
             $"{Environment.NewLine}|     ||" +
             $"{Environment.NewLine}'-----'`");
 
         Console.ForegroundColor = ConsoleColor.White;
     }
 
-    public static void DrawCokkies(ConsoleColor color = ConsoleColor.White)
+    public static void DrawCookies(ConsoleColor color = ConsoleColor.White)
     {
         Console.ForegroundColor = color;
 
@@ -57,6 +57,25 @@ public static class AsciArt
                       $"{Environment.NewLine} jgs   \\`------`/|  '--'  |" +
                       $"{Environment.NewLine}        `------' \\`------`/" +
                       $"{Environment.NewLine}                  `------`");
+
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+
+    public static void Table(ConsoleColor color = ConsoleColor.White)
+    {
+        Console.ForegroundColor = color;
+
+        Console.WriteLine("                      ___          /|" +
+                          $"{Environment.NewLine}         ||||     .-\"`   `\"-.     }} |  __" +
+                          $"{Environment.NewLine}    |||| ||||   .'  .-'`'-.  '.   }} | /  \\" +
+                          $@"{Environment.NewLine}    |||| \  /  /  .'       '.  \  }} | ;();" +
+                          $@"{Environment.NewLine}    \  /  ||  /  ;           ;  \  \| \  /" +
+                          $"{Environment.NewLine}     ||   ||  | ;             ; |  ||  ||" +
+                          $"{Environment.NewLine}     %%   %%  | ;             ; |  %%  %%" +
+                          $"{Environment.NewLine}     %%   %%  \\  ;           ;  /  %%  %%" +
+                          $"{Environment.NewLine}     %%   %%   \\  '.       .'  /   %%  %%" +
+                          $"{Environment.NewLine}     %%   %%    '.  `-.,.-'  .'    %%  %%" +
+                          $"{Environment.NewLine}jgs  %%   %%      '-.,___,.-'      %%  %%");
 
         Console.ForegroundColor = ConsoleColor.White;
     }
